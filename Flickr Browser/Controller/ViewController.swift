@@ -22,7 +22,7 @@ class ViewController: UIViewController, FlickrPhotosRepoDelegate{
         photosTableView.dataSource = self
         photoRepo = FlickrPhotosRepo(delegate: self)
         
-        photoRepo?.downloadPhotosData(tags: "cars")
+        photoRepo?.downloadPhotosData(tags: "planes")
         setTableViewheight()
     }
     
@@ -50,6 +50,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = photosTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! PhotoCell
         let flickrPhoto = photosArray[indexPath.row]
         cell.photoTitlelabel.text = flickrPhoto.title
+        cell.loadPhoto()
         
         return cell
     }
