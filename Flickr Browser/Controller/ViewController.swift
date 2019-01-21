@@ -12,12 +12,15 @@ class ViewController: UIViewController, FlickrPhotosRepoDelegate{
     
     var photosArray = [FlickrPhoto]()
     var photoRepo: FlickrPhotosRepo?
+    var selectedFlickrPhoto: FlickrPhoto?
     
     @IBOutlet weak var photosTableView: UITableView!
-
+    @IBOutlet weak var tagsSearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tagsSearchBar.delegate = self
         photosTableView.delegate = self
         photosTableView.dataSource = self
         photoRepo = FlickrPhotosRepo(delegate: self)
@@ -38,6 +41,13 @@ class ViewController: UIViewController, FlickrPhotosRepoDelegate{
         setTableViewheight()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPhotoDetail" {
+            let destination = segue.destination as! PhotoDetailController
+            destination.detailedPhoto = selectedFlickrPhoto
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -50,7 +60,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = photosTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! PhotoCell
         let flickrPhoto = photosArray[indexPath.row]
         cell.photoTitlelabel.text = flickrPhoto.title
-        cell.loadPhoto()
+        print(flickrPhoto.photoUrl)
+        cell.loadPhoto(imageUrl: flickrPhoto.photoUrl)
         
         return cell
     }
@@ -58,6 +69,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func setTableViewheight() {
         self.photosTableView.rowHeight = UITableView.automaticDimension
         self.photosTableView.estimatedRowHeight = 250.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedFlickrPhoto = photosArray[indexPath.row]
+        photosTableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "toPhotoDetail", sender: self)
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+        if let tags = searchBar.text {
+            photoRepo?.downloadPhotosData(tags: tags)
+            searchBar.text = ""
+            searchBar.endEditing(true)
+        }
+        
     }
 }
 

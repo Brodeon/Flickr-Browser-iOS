@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01203D9621F516D200B9EE57 /* PhotoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01203D9521F516D200B9EE57 /* PhotoDetailController.swift */; };
 		017E18F521F4AED100F3FACF /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E18F421F4AED100F3FACF /* PhotoCell.swift */; };
 		017E18F721F4B09000F3FACF /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E18F621F4B09000F3FACF /* FlickrPhoto.swift */; };
 		017E18F921F4B43700F3FACF /* FlickrPhotosRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E18F821F4B43700F3FACF /* FlickrPhotosRepo.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01203D9521F516D200B9EE57 /* PhotoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailController.swift; sourceTree = "<group>"; };
 		017E18F421F4AED100F3FACF /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		017E18F621F4B09000F3FACF /* FlickrPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 		017E18F821F4B43700F3FACF /* FlickrPhotosRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotosRepo.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		017E18EB21F4A99500F3FACF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				017E18F621F4B09000F3FACF /* FlickrPhoto.swift */,
 				017E18F821F4B43700F3FACF /* FlickrPhotosRepo.swift */,
 			);
 			path = Model;
@@ -69,7 +72,7 @@
 				018AC35921F4A6F00005BC55 /* AppDelegate.swift */,
 				018AC35B21F4A6F00005BC55 /* ViewController.swift */,
 				017E18F421F4AED100F3FACF /* PhotoCell.swift */,
-				017E18F621F4B09000F3FACF /* FlickrPhoto.swift */,
+				01203D9521F516D200B9EE57 /* PhotoDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				017E18F921F4B43700F3FACF /* FlickrPhotosRepo.swift in Sources */,
+				01203D9621F516D200B9EE57 /* PhotoDetailController.swift in Sources */,
 				018AC35C21F4A6F00005BC55 /* ViewController.swift in Sources */,
 				017E18F721F4B09000F3FACF /* FlickrPhoto.swift in Sources */,
 				017E18F521F4AED100F3FACF /* PhotoCell.swift in Sources */,

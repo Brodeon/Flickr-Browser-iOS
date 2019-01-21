@@ -66,8 +66,8 @@ class FlickrPhotosRepo {
 
             photo.title = photoData["title"].stringValue
             photo.author = photoData["author"].stringValue
-            photo.description = photoData["description"].stringValue
-            photo.photoUrl = photoData["link"].stringValue
+            photo.description = photoData["tags"].stringValue
+            photo.photoUrl = photoData["media"]["m"].stringValue
             
             dataArray.append(photo)
         }

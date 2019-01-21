@@ -21,11 +21,15 @@ class PhotoCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
-    func loadPhoto() {
-        
+    func loadPhoto(imageUrl: String) {
+        let url = URL(string: imageUrl)
+        if let urlFromString = url {
+            photoImageView.af_setImage(withURL: urlFromString, placeholderImage: UIImage(named: "flickr"))
+        } else {
+            photoImageView.image = UIImage(named: "flickr")
+        }
     }
 
 }
