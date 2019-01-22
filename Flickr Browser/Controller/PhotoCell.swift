@@ -14,6 +14,7 @@ class PhotoCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoTitlelabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -31,5 +32,5 @@ class PhotoCell: UITableViewCell {
             photoImageView.image = UIImage(named: "flickr")
         }
     }
-
+    
 }
