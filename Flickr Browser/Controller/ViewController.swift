@@ -48,6 +48,8 @@ class ViewController: UIViewController, FlickrPhotosRepoDelegate{
         }
     }
     
+   
+   
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,8 +61,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = photosTableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! PhotoCell
         let flickrPhoto = photosArray[indexPath.row]
+        
         cell.photoTitlelabel.text = flickrPhoto.title
-        print(flickrPhoto.photoUrl)
         cell.loadPhoto(imageUrl: flickrPhoto.photoUrl)
         
         return cell
@@ -81,14 +83,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    
         if let tags = searchBar.text {
             photoRepo?.downloadPhotosData(tags: tags)
             searchBar.text = ""
             searchBar.endEditing(true)
         }
-        
     }
 }
+
+
 
 
