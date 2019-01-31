@@ -25,7 +25,13 @@ class ViewController: UIViewController, FlickrPhotosRepoDelegate{
         photosTableView.dataSource = self
         photoRepo = FlickrPhotosRepo(delegate: self)
         
-        photoRepo?.downloadPhotosData(tags: "planes")
+        let lastSearchedTags = UserDefaults.standard.string(forKey: "tags")
+        
+        if let tags = lastSearchedTags {
+            photoRepo?.downloadPhotosData(tags: tags)
+        } else {
+            photoRepo?.downloadPhotosData(tags: "flickr")
+        }
         setTableViewheight()
     }
     
@@ -85,10 +91,15 @@ extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let tags = searchBar.text {
             photoRepo?.downloadPhotosData(tags: tags)
+            
+            let defaults = UserDefaults.standard
+            defaults.set(tags, forKey: "tags")
+            
             searchBar.text = ""
             searchBar.endEditing(true)
         }
     }
+    
 }
 
 
